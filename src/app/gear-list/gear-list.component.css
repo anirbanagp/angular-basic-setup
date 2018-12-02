@@ -1,0 +1,20 @@
+.checkbox label {
+    padding-left: 25px;
+}
+
+.checkbox label::before {
+    left: 0;
+    right: auto;
+}
+
+.checkbox label::after {
+    left: 0;
+    right: auto;
+}
+
+#contact_form_list input {
+    outline: none;
+    border: none;
+    margin-right: 7px;
+}
+

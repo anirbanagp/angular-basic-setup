@@ -1,0 +1,165 @@
+<body>
+
+  <a [ngClass]="{'show-scroll': navIsFixed}" (click)="scrollToTop()" title="Back to top" class="scroll-to-top">↑</a>
+
+  <!--  fixed nav  -->
+  <!--slider-nav bar-->
+  <section *ngIf="global.showHeader" class="slider-nav-section top_nav navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-static-top nav-bar-menu hidden-lg hidden-md hidden-sm">
+      <div class="navbar-header">
+        <a class="navbar-brand" routerLink="/">
+          <div class="logo animated bounceInDown">
+            <img src="assets/images/logo.png" class="img-responsive"> </div>
+        </a>
+      </div>
+
+      <nav class="navbar navbar-fixed-left navbar-minimal animate {{ navMenuClass[0]  ? 'open' : '' }}" role="navigation">
+        <div (click)="toggleNavMenu(0)" class="navbar-toggler animate">
+          <span class="menu-icon"></span>
+        </div>
+        <ul class=" navbar-menu animate">
+
+          <li>
+            <form class="example" action="/action_page.php" style="max-width: 100%; margin-top: 7px;">
+              <input type="text" placeholder="Search.." name="search2">
+              <input type="text" placeholder="Pick a location....." name="search2" class="no_round">
+              <button type="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </form>
+          </li>
+          <li>
+            <a routerLink="/">Home</a>
+          </li>
+          <li>
+            <a href="#">Search Gear</a>
+          </li>
+          <li>
+            <a [routerLink]="['faq']">FAQ</a>
+          </li>
+          <li>
+            <a href="#">Blog</a>
+          </li>
+          <li *ngIf="auth.isLoggedIn">
+            <a [routerLink]="['profile']">Profile</a>
+          </li>
+          <li *ngIf="auth.isLoggedIn">
+            <a (click)="logout()">Log Out</a>
+          </li>
+
+          <li *ngIf="auth.isLoggedIn" class="list_gear">
+            <a [routerLinkActive]="['active']" routerLink="/gear-list">
+              List your Gear
+            </a>
+          </li>
+
+          <li>
+            <a *ngIf="auth.isLoggedIn">
+              <span>
+                <i class="fa fa-cart-plus addtocart"></i>
+              </span>Cart</a>
+          </li>
+          <li *ngIf="!auth.isLoggedIn">
+            <a [routerLinkActive]="['active']" routerLink="/login">Sign In </a>
+          </li>
+          <!-- <li><a href="#" class="md-trigger" data-modal="modal-5">Sign In </a></li>-->
+          <!--<li><a href="#" class=" md-trigger" data-modal="modal-4">Join Now</a></li>-->
+          <li *ngIf="!auth.isLoggedIn">
+            <a [routerLinkActive]="['active']" routerLink="/sign-up">Join Now</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="navbar navbar-inverse navbar-static-top nav-bar-menu  hidden-xs">
+      <div class="navbar-header">
+        <li class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </li>
+        <a class="navbar-brand" routerLink="/">
+          <div class="logo animated bounceInDown">
+            <img src="assets/images/logo.png" class="img-responsive"> </div>
+        </a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <div class="col-sm-5 col-md-5 col-lg-7">
+          <form class="example" action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search2">
+            <input type="text" placeholder="Pick a location....." name="search2" class="no_round">
+            <button type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+
+            <!-- search listing -->
+            <!-- <div class="show_search_cat">
+              <ul>
+                <li><a href="#">Catagory 1</a></li>
+                <li><a href="#">Catagory 2</a></li>
+                <li><a href="#">Catagory 3</a></li>
+              </ul>
+            </div> -->
+          </form>
+        </div>
+
+        <ul class="nav navbar-nav navigation navbar-right">
+          <li *ngIf="!auth.isLoggedIn">
+            <a [routerLinkActive]="['active']" routerLink="/login">Sign In </a>
+          </li>
+          <li *ngIf="!auth.isLoggedIn">
+            <a [routerLinkActive]="['active']" routerLink="/sign-up">Join Now</a>
+          </li>
+          <li *ngIf="auth.isLoggedIn" class="list_gear">
+            <a [routerLinkActive]="['active']" routerLink="/gear-list">
+              List your Gear
+            </a>
+          </li>
+          <li>
+            <a *ngIf="auth.isLoggedIn">
+              <span>
+                <i class="fa fa-cart-plus addtocart"></i>
+              </span>
+            </a>
+          </li>
+          <li style="display:none">
+            <a href="#" class="">
+              <img src="assets/images/picture.jpg" class="img-responsive profile_image">
+            </a>
+          </li>
+          <li>
+            <nav class="navbar navbar-fixed-left navbar-minimal animate {{ navMenuClass[1] ? 'open' : '' }}" role="navigation">
+              <div (click)="toggleNavMenu(1)" class="navbar-toggler animate">
+                <span class="menu-icon"></span>
+              </div>
+              <ul class=" navbar-menu animate">
+                <li>
+                  <a routerLink="/">Home</a>
+                </li>
+                <li>
+                  <a href="#">Search Gear</a>
+                </li>
+                <li>
+                  <a [routerLink]="['faq']">FAQ</a>
+                </li>
+
+                <li>
+                  <a href="#">Blog</a>
+                </li>
+                <li *ngIf="auth.isLoggedIn">
+                  <a [routerLink]="['profile']">Profile</a>
+                </li>
+                <li *ngIf="auth.isLoggedIn">
+                  <a (click)="logout()">Log Out</a>
+                </li>
+              </ul>
+            </nav>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+
+  </section>

@@ -1,0 +1,15 @@
+<div class="media comment-author">
+  <a class="media-left pull-left flip" href="#">
+    <img class=" img-responsive" src="{{ eachReview.user_profile_picture_link }}" alt=""> {{ eachReview.reviewer_fname }} {{ eachReview.reviewer_lname }} says
+  </a>
+  <div class="media-body">
+    <p>{{ eachReview.gear_description_1 }}
+    </p>
+    <div class="comment-date">{{ eachReview.cust_gear_review_date }}
+      <span>
+        <i class="fa fa-flag" aria-hidden="true"></i>
+      </span>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>

@@ -1,0 +1,249 @@
+<section class="dashboard_body">
+  <div class="container">
+    <div class="info page-info">
+      <div class="prof-wrapper">
+        <div class="row">
+          <div class="col-lg-3 col-md-4">
+            <div id="user" class="space-4 ">
+              <div>
+                <div class="space-2" id="user-media-container">
+                  <img src="{{ userProfileData.user_profile_picture_link }}" class="img-responsive">
+                </div>
+              </div>
+            </div>
+            <div class="space-4">
+              <div class="profile_details hidden-lg hidden-md">
+                <div class="prof-user-sidebar__ADMIN__edit-button-container">
+                  <a class="sk-button--size-lg dashboard-button-link  hvr-float-shadow" [routerLink]="['edit']">
+                    <i class="fa fa-pencil-square-o"></i>
+                    Edit Profile
+                  </a>
+                </div>
+                <h1>
+                  <strong>{{ userProfileData.app_user_first_name }} {{ userProfileData.app_user_last_name }} </strong>
+                </h1>
+                
+                <div class="h5 space-top-2">
+                  <a href="#" class="link-reset">IN</a>
+                  ·
+                  <span class="text-normal">
+                    Joined in {{ userProfileData.create_date | date : 'MMM d, y' }}
+                  </span>
+                </div>
+                <div class="text-muted space-top-2 rating_profile">
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+                <div class="own_info">
+                  <p>{{ userProfileData.user_description }}</p>
+                </div>
+                <div class="profile_icon_info">
+                  <a href="#" class="btn btn-social-icon social_btns">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                  <a class="btn btn-social-icon btn-twitter social_btns">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                  <a class="btn btn-social-icon btn-linkedin social_btns">
+                    <i class=" fa fa-youtube"></i>
+                  </a>
+                  <a class="btn btn-social-icon btn-vk social_btns">
+                    <i class="fa fa-vk"></i>
+                  </a>
+                  <a class="btn btn-social-icon btn-linkedin social_btns">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                  <a class="btn btn-social-icon btn-instagram social_btns">
+                    <i class="fa fa-instagram"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="panel space-4">
+              <div class="panel-header">
+                Verified Info
+              </div>
+              <div class="panel-body">
+                <ul class="list-unstyled space-3" title="Verified info">
+                  <li>
+                    <a href="#">Government ID
+                      <span class="pull-right">
+                        <i class="" aria-hidden="true">
+                          <img src="assets/images/tick.png">
+                        </i>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">Phone Number
+                      <span class="pull-right">
+                        <i class="" aria-hidden="true">
+                          <img src="assets/images/tick.png">
+                        </i>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="lern_sec">
+                  <a href="#">Learn more
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="panel space-4">
+              <div class="panel-header">
+                My Network
+              </div>
+              <div class="panel-body network">
+                <span>
+                  <img src="assets/images/network_image.png">
+                </span>
+                <span>
+                  <img src="assets/images/network_image.png">
+                </span>
+                <span>
+                  <img src="assets/images/network_image.png">
+                </span>
+                <span>
+                  <img src="assets/images/network_image.png">
+                </span>
+                <span>
+                  <img src="assets/images/network_image.png">
+                </span>
+                <span>
+                  <img src="assets/images/network_image.png">
+                </span>
+                <span>
+                  <img src="assets/images/network_image.png">
+                </span>
+                <span>
+                  <img src="assets/images/network_image.png">
+                </span>
+                <span>
+                  <img src="assets/images/network_image.png">
+                </span>
+                <span>
+                  <img src="assets/images/network_image.png">
+                </span>
+              </div>
+            </div>
+            <div class="panel space-4">
+              <div class="panel-body info_panel">
+                <h2>Availabilty and Use</h2>
+                <p> 24 hrs Response time
+                  <br> 100% Acceptance Rate
+                  <br> 59 Reviewa
+                  <br> 3 References
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-9 col-md-8 col-sm-12">
+            <div class="">
+              <div class="profile_details hidden-xs  hidden-sm">
+                <h1>
+                  <strong>{{ userProfileData.app_user_first_name }} {{ userProfileData.app_user_last_name }} </strong>
+                </h1>
+                <div class="prof-user-sidebar__ADMIN__edit-button-container">
+                  <a class="sk-button--size-lg dashboard-button-link  hvr-float-shadow" [routerLink]="['edit']">
+                    <i class="fa fa-pencil-square-o"></i>
+                    Edit Profile
+                  </a>
+                </div>
+                <div class="h5 space-top-2">
+                  <a href="#" class="link-reset">IN</a>
+                  ·
+                  <span class="text-normal">
+                    Joined in {{ userProfileData.create_date | date : 'MMM d, y' }}
+                  </span>
+                </div>
+                <div class="text-muted space-top-2 rating_profile">
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+                <div class="own_info">
+                  <p>{{ userProfileData.user_description }}</p>
+                </div>
+                <div class="profile_icon_info">
+                  <a href="{{ userProfileData.facebook_link }}" class="btn btn-social-icon social_btns">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                  <a href="{{ userProfileData.twitter_link }}" class="btn btn-social-icon btn-twitter social_btns">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                  <a href="{{ userProfileData.twitter_link }}" class="btn btn-social-icon btn-linkedin social_btns">
+                    <i class=" fa fa-youtube"></i>
+                  </a>
+                  <a href="{{ userProfileData.twitter_link }}" class="btn btn-social-icon btn-vk social_btns">
+                    <i class="fa fa-vk"></i>
+                  </a>
+                  <a href="{{ userProfileData.twitter_link }}" class="btn btn-social-icon btn-linkedin social_btns">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                  <a href="{{ userProfileData.twitter_link }}" class="btn btn-social-icon btn-instagram social_btns">
+                    <i class="fa fa-instagram"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="prof-user-listings__heading">
+                <h2>{{ gearLists.length === 0 ? 'No' : gearLists.length }} Listings</h2>
+              </div>
+              <div class="col-md-4 col-sm-4 no_padding col-xs-12">
+                <div class="category_btn">
+                  <select class="form-control category_lable">
+                    <option value="">Select Category</option>
+                    <ng-container *ngFor="let eachCategory of gearCategries ">
+                      <option value="{{ eachCategory.gear_category_id}}">{{ eachCategory.gear_category_name}}</option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-8 col-sm-8 col-xs-12 no_padding">
+                <div class="search_btns">
+                  <form class="examplenew" action="/action_page.php">
+                    <input type="text" placeholder="Search.." name="search2">
+                    <button type="submit">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="profle_product_details">
+                <ng-container *ngFor="let eachGear of gearLists">
+                  <app-gear [eachGear]="eachGear"></app-gear>
+                </ng-container>
+                <ng-container *ngIf="gearLists.length === 0">
+                  <p>No Gear Found! </p>
+                </ng-container>
+
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="prof-user-listings__heading reviews_sec">
+              <h2>Reviews</h2>
+            </div>
+            <div class="clearfix"></div>
+            <div class="text_reviews">Reviews From Guests</div>
+            <ng-container *ngFor="let eachReview of reviewLists">
+              <app-review [eachReview]="eachReview"></app-review>
+            </ng-container>
+            <ng-container *ngIf="reviewLists.length === 0">
+              <p>No Review Found! </p>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <!-- FOLLOWERS MODAL -->
+    </div>
+  </div>
+</section>

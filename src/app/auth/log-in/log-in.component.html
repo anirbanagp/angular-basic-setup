@@ -1,0 +1,41 @@
+<section class="sign_background login_background">
+    <div class="container">
+        <div class="col-md-12">
+            <form class="sign_up" name="login" id="panel">
+                <h2>Log in</h2>
+                <div class="group">
+                    <input name="email" type="email" [(ngModel)]="loginData.primary_email_address" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label [class.Active]="('email')">Email</label>
+                </div>
+                <div class="group group1">
+                    <input name="password" [(ngModel)]="loginData.app_password" type="password" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Password</label>
+                </div>
+                <div class="clearfix"></div>
+                <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" (click)="submitForm()" type="submit">Log in</button>
+                <div class="clearfix"></div>
+                <app-social-login></app-social-login>
+                <div class="clearfix"></div>
+                <div class="group group1">
+                    <div class="text-center">
+                        <p>Forgot Password ?
+                            <a routerLink="/forgot-password" class="text-info m-l-5">
+                                <b>Reset It</b>
+                            </a>
+                        </p>
+
+                        <p>Don't have an account?
+                            <a routerLink="/sign-up" class="text-info m-l-5">
+                                <b>Sign Up</b>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

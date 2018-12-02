@@ -1,0 +1,395 @@
+<section class="dashboard_bodynew">
+  <div class="top_bresdcum">
+    <div class="container">
+      <div class="col-md-12">
+        List Your Gear
+      </div>
+    </div>
+  </div>
+  <div id="contact_form_list">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-8 col-sm-8">
+
+          <div class="col-md-12">
+            <div class="photo_headings headings_new">
+              <strong>Listing Title</strong>
+            </div>
+          </div>
+
+          <div class="container-contact100">
+            <div class="wrap-contact100">
+              <form class="contact100-form validate-form" name="list_of_gear_form">
+                <div class="col-md-12 col-sm-12">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <input class="input100 input1000" [(ngModel)]="gearListData.gearName" autocomplete="off" type="text"
+                      name="name" placeholder="What gear are you listing?">
+                    <span class="focus-input100"></span>
+                  </div>
+                  <p class="input_typing_text">Try typing a brand,model,or category,ie."canon C300"Red Epic Dragon,
+                    or"boom
+                    pole"
+                  </p>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 wrap-input1000 validate-input suggestion_list">
+                    <span class="label-input100">Brand</span>
+                    <app-suggestion-box [name]="'gearBrandList'" [selectedValue]="gearListData.gear_brand_name"
+                      (updatedSuggestionValue)="gearBrandSelected($event)" [optionValueField]="'manufacturer_name'"
+                      [optionLabelField]="'manufacturer_name'" [placeHolder]="'Enter Brand Name'" [suggestions]="gearBrandList"></app-suggestion-box>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <span class="label-input100">Model</span>
+                    <app-suggestion-box [name]="'gearModelId'" (updatedSuggestionValue)="gearModelSelected($event)"
+                      [optionValueField]="'model_name'" [optionLabelField]="'model_name'" [placeHolder]="'Enter Model Name'"
+                      [suggestions]="gearModelList"></app-suggestion-box>
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 input100-select">
+                    <span class="label-input100">Category</span>
+                    <div>
+                      <app-suggestion-box [name]="'gearCategoryId'" [selectedValue]="gearListData.gear_category_name"
+                        [isDisabled]="disabled.category" (updatedSuggestionValue)="gearCategorySelected($event)"
+                        [optionValueField]="'gear_category_name'" [optionLabelField]="'gear_category_name'"
+                        [placeHolder]="'Enter Category Name'" [suggestions]="gearCategoryList"></app-suggestion-box>
+                      <!-- [isDisabled]="disabled.category" [selectedValue]="gearListData.gear_category_name"  <ngx-select (select)="gearCategorySelected($event)" optionValueField="gear_category_id" optionTextField="gear_category_name"
+                        name="gearCategoryId" [items]="gearCategoryList" [(ngModel)]="gearListData.gearCategoryId" placeholder="No category selected"></ngx-select> -->
+                    </div>
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 input100-select">
+                    <span class="label-input100">Sub Category</span>
+                    <div>
+                      <app-suggestion-box [name]="'gearSubCategoryId'" [selectedValue]="gearListData.gear_sub_category_name"
+                        [isDisabled]="disabled.subCategory" [optionValueField]="'gear_category_name'"
+                        (updatedSuggestionValue)="gearSubCategorySelected($event)" [optionLabelField]="'gear_category_name'"
+                        [placeHolder]="'Enter Sub Category Name'" [suggestions]="gearSubCategoryList"></app-suggestion-box>
+                      <!-- <ngx-select optionValueField="gear_category_id" optionTextField="gear_category_name" name="gearSubCategoryId" [items]="gearSubCategoryList"
+                        [(ngModel)]="gearListData.gearSubCategoryId" placeholder="No sub category selected"></ngx-select> -->
+                    </div>
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <p class="input_typing_text">Unsure of the brand or have a"generic"brand?
+                    <a href="javascript:void(0);" (click)="setVariousBrans()">Click here</a>
+                  </p>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 validate-input Replacement_value">
+                    <span class="label-input100">Replacement value</span>
+                    <input class="input100" [(ngModel)]="gearListData.replacement_value_aud_inc_gst" name="replacement_value_aud_inc_gst"
+                      autocomplete="off" placeholder="2959.00" type="text">
+                    <span class="focus-input100"></span>
+                    <i class="default_value">$</i>
+                  </div>
+                </div>
+
+
+
+                <div class="clearfix"></div>
+
+
+                <div class="col-md-12" *ngIf="gearImageList">
+                  <div class="photo_headings headings_new">
+                    <strong>Photo</strong>
+                  </div>
+                  <p class="form_description">Owners who take their own gear pictures get 2.5x more rentals on
+                    kitshare,
+                    so we recommend snapping some shots!
+                  </p>
+                  <div class="photo_gelary">
+                    <ng-container *ngFor="let eachImage of gearImageList; let i=index">
+                      <div class="upload_img">
+                        <img [src]="eachImage" class="img-responsive">
+                        <span (click)="removeImage(i)">
+                          <i class="fa fa-times-circle" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                    </ng-container>
+                    <div class="upload_img img_view">
+                      <img width="50px" height="50px" src="assets/images/add_img.svg" />
+                      <input type="file" name="gearImageUpload" (change)="onFileChange($event)" class="filt_upload">
+                    </div>
+                  </div>
+                  <div class="upload_img_button">
+                    <input type="file" (change)="onFileChange($event)" name="gearImageUpload" class="btn ">Add Photos
+                  </div>
+
+
+                </div>
+                <div class="col-md-12" *ngIf="gearListData.model_description">
+                  <div class="photo_headings headings_new">
+                    <strong>Product Description</strong>
+                  </div>
+                  <p class="form_description"> {{ gearListData.model_description }} </p>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="comment" class="product_des">Additional notes about your gear</label>
+                    <textarea class="form-control product_des1" [(ngModel)]="gearListData.additional_description" rows="5"
+                      name="additional_data"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 input100-select">
+                    <span class="label-input100">Condition</span>
+                    <div>
+                      <ngx-select name="gearModelId" [items]="gearConditionlList" [(ngModel)]="gearListData.gearCondition"
+                        placeholder="No Condition selected"></ngx-select>
+                    </div>
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 validate-input">
+                    <span class="label-input100">Serial Number</span>
+                    <input [(ngModel)]="gearListData.serialNumber" class="input100" name="name" placeholder=""
+                      autocomplete="off" type="text">
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                  <div class="wrap-input100 input100-select">
+                    <span class="label-input100">Gear Type</span>
+                    <div>
+                      <ngx-select optionValueField="id" optionTextField="label" name="gearTypelId" [items]="gearTypeList"
+                        [(ngModel)]="gearListData.gearTypeId" placeholder="No Type selected"></ngx-select>
+                    </div>
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <ng-container *ngIf="gearListData.gearTypeId != '3'">
+                  <div class="col-md-12 col-sm-12" *ngFor="let eachItem of extraItems; let i=index; let lastItem = last;">
+                    <app-extra-item [optionList]="gearItemsList" [actionType]="lastItem ? 'add' : 'remove'"
+                      [defaultValue]="gearListData.extraItems[i]" [index]="i" (updatedValue)="updateExtraItemValueHandler($event)"
+                      (action)="ExtraItemActionValueHandler($event)"></app-extra-item>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="gearListData.gearTypeId == '1'">
+                  <div class="col-md-12 col-sm-12">
+                    <div class="wrap-input100 wrap-input1000 validate-input">
+                      <input class="input100 input1000" [(ngModel)]="gearListData.image360Link" autocomplete="off" type="text"
+                        name="image360Link" placeholder="360 image link">
+                      <span class="focus-input100"></span>
+                    </div>
+                  </div>
+
+                </ng-container>
+                <div class="col-md-12">
+                  <div class="photo_headings headings_new">
+                    <strong>Price</strong>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 validate-input Replacement_value">
+                    <span class="label-input100">Price per day</span>
+                    <input autocomplete="off" (ngModelChange)="calculteReplacementValue($event)" class="input100"
+                      [(ngModel)]="gearListData.per_day_cost_aud_ex_gst" name="per_day_cost_aud_ex_gst" placeholder="700.00"
+                      type="text">
+                    <span class="focus-input100"></span>
+                    <i class="default_value">$</i>
+                  </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="col-md-12">
+                  <div class="description12">
+                    You are more likely to get rentals at this price.
+                    <br> Suggested market price:$700-
+                    <a href="#">Set to this Price</a>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="price_img">
+                    <!-- (onUpdate)="myOnUpdate($event)" (onChange)="myOnChange($event)" (onFinish)="myOnFinish($event)" -->
+                    <ion-range-slider from_fixed="true" to_fixed="true" #sliderElement grid="true" type="double" [from]="sliderDetails.minValue"
+                      [to]="sliderDetails.maxValue" [min]="sliderDetails.minRange" [max]="sliderDetails.maxRange"
+                      prefix="price: " postfix="Dollar" decorate_both="false"></ion-range-slider>
+                  </div>
+                </div>
+                <div class="col-md-12 hidden-md hidden-sm hidden-lg">
+                  <div class="right_panel right_panel_mobile">
+                    <p class="add_details">Additional Details</p>
+                    <p>
+                      <button type="button" class="btn btn-secondary category-btn category-btnnew category-btnnew1">Photo
+                        or video</button>
+                    </p>
+                    <p>
+                      <button type="button" class="btn btn-secondary category-btn category-btnnew category-btnnew1">Lense
+                        mount
+                      </button>
+                    </p>
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle resulotion_btns resulotion_btns1" type="button"
+                        data-toggle="dropdown">Resolution
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu resulation_drop resulation_drop1" style="display: none;">
+                        <li>
+                          <div class="radio">
+                            <label>
+                              <input name="optradio" type="radio">Option 1</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="radio">
+                            <label>
+                              <input name="optradio" type="radio">Option 1</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="radio">
+                            <label>
+                              <input name="optradio" type="radio">Option 1</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="photo_headings headings_new">
+                    <strong>Gear Address</strong>
+                  </div>
+                </div>
+                <ng-container *ngFor="let address of allAddress; let i=index; let lastItem = last;">
+                  <div class="col-md-12">
+                    <div>
+                      <div class="checkbox checkbox">
+                        <input name="address[]" (change)="addressSelectHandler(address.user_address_id, $event.target.checked)"
+                          id="{{i}}_address" type="checkbox">
+                        <label for="{{i}}_address" class="checkbox5">
+                          <app-address [isDisabled]="true" [defaultValue]="address" [index]="i" (updatedValue)="addressUpdateHandler($event)"></app-address>
+                        </label>
+                      </div>
+                    </div>
+                    <!-- <div class="add_img">
+                      <img *ngIf="!lastItem" (click)="addressActionHandeler(i,'remove')" src="assets/images/remove.png">
+                    </div> -->
+                  </div>
+                </ng-container>
+
+                <div class="col-md-12">
+                  <div class="privacy">
+                    <h4>Listing Status</h4>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" value="listed" [(ngModel)]="gearListData.listing_option" name="listing_option">Listed
+                        (default - searchable and visible on profile) </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" value="not_listed" [(ngModel)]="gearListData.listing_option" name="listing_option">Unlisted</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="photo_headings headings_new">
+                    <strong>Availability Settings</strong>
+                    <p>Tip: Avoid cancelling or declining renters by only unblocking dates you can rent.</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6" *ngFor="let unAvailableIndex of unAvailableCount;let i = index;">
+                      <div class="wrap-input100 validate-input geardate">
+                        <input name="unAvailavleDate{{i}}" [owlDateTime]="unAvailableIndex" [(ngModel)]="unAvailableDates[i]"
+                          [selectMode]="'range'" [min]="minDate" [owlDateTimeTrigger]="unAvailableIndex" placeholder="Date Time">
+                        <owl-date-time [pickerType]="'calendar'" [pickerMode]="'dialog'" #unAvailableIndex></owl-date-time>
+                        <span class="focus-input100"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                  <button type="button" (click)="addNewUnavailableDate()" class="btn btn-default unavailable_btn">Add
+                    New unavailable date</button>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="photo_headings headings_new">
+                    <strong>Heading away for a while? </strong>
+                    <p>Hide all your listings for a set period of time.</p>
+                  </div>
+                </div>
+                <div class="col-md-12 text-center">
+                  <button type="button" (click)="saveGearData()" class="btn btn-default unavailable_btn1">Save Listing</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div id="dropDownSelect1"></div>
+        <div class="col-md-4 col-sm-4 hidden-xs">
+          <div class="right_panel">
+            <p class="add_details">Additional Details</p>
+            <p>
+              <button data-toggle="modal" data-target="#openurl" type="button" class="btn btn-secondary category-btn category-btnnew">Embed
+                Url
+              </button>
+            </p>
+            <p class="add_details">
+              Lense mount
+            </p>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle resulotion_btns" type="button" data-toggle="dropdown">Resolution
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu resulation_drop">
+                <li>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optradio">Option 1</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optradio">Option 1</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optradio">Option 1</label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Modal -->
+<div id="openurl" class="modal fade my_modal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+      <div class="modal-body url_button">
+        <div class="form-group">
+          <p>Submit your URL</p>
+          <textarea placeholder="Submit your URL" rows="3" class="form-control"></textarea>
+        </div>
+        <button class="btn btn-info" type="button">Submit</button>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

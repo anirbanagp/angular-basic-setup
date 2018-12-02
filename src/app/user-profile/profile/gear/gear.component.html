@@ -1,0 +1,35 @@
+<div class="col-md-4 col-sm-4 no_padding">
+  <div class="listing-btn-container">
+    <div class="listing-btn listing-154231">
+      <!-- Image Container -->
+      <div class="fill">
+        <a  [routerLink]="['/profile/view-gear/' + eachGear.user_gear_desc_id ]">
+          <img class="listing-btn-image center-block " alt="" src="{{eachGear.gear_display_image}}"> </a>
+      </div>
+      <!-- END Image Container -->
+      <!-- Info Bar -->
+      <div class="listing-btn-info">
+        <!-- Gear Info Container Link -->
+        <a class="gear-info-container-link" [routerLink]="['/profile/view-gear/' + eachGear.user_gear_desc_id ]">
+          <!-- Gear Info Container -->
+          <div class="gear-info-container">
+            <!-- Item Name -->
+            <h4 class="listing-btn-name">{{eachGear.gear_name }}</h4>
+            <!-- Distance -->
+            <!--    -->
+            <!-- Price -->
+            <h5 class="listing-btn-price"> $ {{ eachGear.per_day_cost_aud_inc_gst}} inc GST
+              <span class="per-day">per day or weekend</span>
+            </h5>
+          </div>
+          <!-- END Gear Info Container -->
+        </a>
+        <!-- END Gear Info Container Link -->
+        <!-- User Info Container -->
+        <!-- END User Info Container -->
+      </div>
+      <!-- END Bottom Info Bar -->
+    </div>
+    <!-- Consider additional listings -->
+  </div>
+</div>

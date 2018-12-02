@@ -1,0 +1,229 @@
+<section class="dashboard_bodynew">
+  <div class="top_bresdcum">
+    <div class="container">
+      <div class="col-md-12">
+        Profile Settings
+      </div>
+    </div>
+  </div>
+  <div id="contact_form_list">
+    <div class="container">
+      <div class="row">
+        <app-left-sidebar></app-left-sidebar>
+        <div class="col-md-9 col-sm-9">
+          <div class="container-contact100 box_shadow_form">
+            <div class="wrap-contact100">
+              <form name="edit-profile-form" class="contact100-form validate-form">
+                <div class="col-md-12">
+                  <p class="photo_info">This information will be visible to all kitshare users in your
+                    <a [routerLink]="['/']">profile page</a>
+                  </p>
+                </div>
+                <div class="col-md-12">
+                  <div class="photo_panel">
+                    <div class="photo_frame">
+                      <div class="space-2" id="user-media-container">
+                        <img [src]=" imageUrl " class="img-responsive">
+                      </div>
+                      <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
+                    </div>
+                    <div class="upload_btns btn">
+                      Upload Photo
+                      <input type="file" name="avatar" id="avatar" (change)="onFileChange($event)" class="">
+                    </div>
+                    <!-- <file-upload [(ngModel)]="uploadedFiles" name="files" fileslimit="2"></file-upload> -->
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-6 col-sm-6"> 
+                  <div class="wrap-input100 validate-input">
+                    <span class="label-input100">First Name</span>
+                    <input class="input100" [(ngModel)]="userProfileData.app_user_first_name" name="app_user_first_name"
+                      placeholder="First Name" type="text" required>
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 validate-input">
+                    <span class="label-input100">Last Name</span>
+                    <input class="input100" name="app_user_last_name" placeholder="Last Name" [(ngModel)]="userProfileData.app_user_last_name"
+                      required type="text">
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <span class="label-input100">UserName</span>
+                    <input class="input100 input1000" type="text" name="app_username" placeholder="Username"
+                      [(ngModel)]="userProfileData.app_username" required>
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="wrap-input100 input100-select">
+                    <span class="label-input100">Date of birth</span>
+                    <input placeholder="Choose Dob" name="dob" [(ngModel)]="dob" class="input100 input1000"
+                      [owlDateTimeTrigger]="dt5" [max]="max" [owlDateTime]="dt5">
+                    <owl-date-time [pickerType]="'calendar'" [pickerMode]="'dialog'" #dt5></owl-date-time>
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="wrap-input100 input100-select">
+                    <span class="label-input100">I am a</span>
+                    <div>
+                      <!-- [(ngModel)]="userProfileData.ks_renter_type_id" -->
+                      <!-- <select class="selection-2" [(ngModel)]="userProfileData.ks_renter_type_id" name="ks_renter_type_id">
+                        <option value="0" selected>--select--</option>
+                        <ng-container *ngFor="let eachRentType of rentalType">
+                          <option value="{{ eachRentType.ks_renter_type_id }}">{{ eachRentType.ks_renter_type }}</option>
+                        </ng-container>
+                      </select> -->
+                      <ngx-select optionValueField="ks_renter_type_id" optionTextField="ks_renter_type" name="ks_renter_type_id"
+                        [items]="rentalType" [(ngModel)]="userProfileData.ks_renter_type_id" placeholder="--select--"></ngx-select>
+                    </div>
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <span class="label-input100">Buisness Name</span>
+                    <input class="input100 input1000" name="name" placeholder="Buisness Name" type="text" [(ngModel)]="userProfileData.app_business_name"
+                      required>
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <span class="label-input100">Australian Buisness Number</span>
+                    <input class="input100 input1000" name="australian_business_number" placeholder="Australiuan Buisness Number"
+                      type="text" [(ngModel)]="userProfileData.australian_business_number" required>
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <span class="label-input100">Phone Number</span>
+                    <input class="input100 input1000" name="primary_mobile_number" placeholder="Phone Number" type="text"
+                      [(ngModel)]="userProfileData.primary_mobile_number" required>
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="comment" class="product_des">About me</label>
+                    <textarea class="form-control product_des1" [(ngModel)]="userProfileData.user_description" name="user_description"
+                      rows="5" id="comment"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                  <div class="wrap-input100 input100-select">
+                    <span class="label-input100">Profession</span>
+                    <div>
+                      <!-- <select class="selection-2" (change)="chekProfession()" [(ngModel)]="userProfileData.profession_type_id"
+                        name="profession_type_id">
+                        <option value="0" selected="selected">-- Select Profession --</option>
+                        <ng-container *ngFor="let eachProfession of professionType">
+                          <option value="{{ eachProfession.profession_type_id }}">{{ eachProfession.profession_name }}
+                          </option>
+                        </ng-container>
+                        <option value="-1">Other</option>
+                      </select> -->
+                      <ngx-select optionValueField="profession_type_id" optionTextField="profession_name" name="profession_type_id"
+                        [items]="professionType" [(ngModel)]="userProfileData.profession_type_id" placeholder="-- Select Profession --"></ngx-select>
+                    </div>
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div *ngIf="mentionOtherProfession" class="col-md-12 col-sm-12">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <span class="label-input100">Please specify profession</span>
+                    <input class="input100 input1000" [(ngModel)]="userProfileData.other_profession" name="other_profession"
+                      placeholder="Please specify profession" type="text">
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <span class="label-input100">Website</span>
+                    <input class="input100" name="website" placeholder="Insert link to your personal/portfolio site"
+                      [(ngModel)]="userProfileData.website_link" required type="text">
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <span class="label-input100">Facebook</span>
+                    <input class="input100" name="facebook_link" placeholder="" [(ngModel)]="userProfileData.facebook_link"
+                      type="text">
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <span class="label-input100">Twitter</span>
+                    <input class="input100" name="twitter_link" placeholder="" [(ngModel)]="userProfileData.twitter_link"
+                      required type="text">
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <span class="label-input100">Youtube</span>
+                    <input class="input100" name="youtube_link" placeholder="" [(ngModel)]="userProfileData.youtube_link"
+                      required type="text">
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <span class="label-input100">imdb</span>
+                    <input class="input100" name="imdb_link" placeholder="" [(ngModel)]="userProfileData.imdb_link"
+                      required type="text">
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <span class="label-input100">Vimeo</span>
+                    <input class="input100" name="vimeo_link" placeholder="" [(ngModel)]="userProfileData.vimeo_link"
+                      required type="text">
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <span class="label-input100">Instragram</span>
+                    <input class="input100" name="instagram_link" placeholder="" [(ngModel)]="userProfileData.instagram_link"
+                      required type="text">
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="wrap-input100 wrap-input1000 validate-input">
+                    <span class="label-input100">Linkedin</span>
+                    <input class="input100" name="linkedin_link" placeholder="" [(ngModel)]="userProfileData.linkedin_link"
+                      required type="text">
+                    <span class="focus-input100"></span>
+                  </div>
+                </div>
+                <!-- <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="comment" class="product_des">Skills</label>
+                    <textarea class="form-control product_des1" rows="2" id="comment"></textarea>
+                  </div>
+                </div> -->
+                <div class="clearfix"></div>
+                <div class="col-md-12 text-center">
+                  <button type="button" (click)="updateProfile()" class="btn btn-default unavailable_btn1">Update
+                    Profile</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div id="dropDownSelect1"></div>
+      </div>
+    </div>
+  </div>
+</section>

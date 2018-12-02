@@ -1,0 +1,53 @@
+<section class="dashboard_bodynew">
+  <div class="top_bresdcum">
+    <div class="container">
+      <div class="col-md-12">
+        Profile Settings
+      </div>
+    </div>
+  </div>
+  <div id="contact_form_list">
+    <div class="container">
+      <div class="row">
+        <app-left-sidebar></app-left-sidebar>
+        <div class="col-md-9 col-sm-9">
+          <div class="container-contact100 box_shadow_form">
+            <div class="wrap-contact100">
+              <div class="digital_text insurance_text">
+                <h3>Add Proof of Insurance</h3>
+                <hr class="insuransr_line">
+                <p class="margin_top">Use an insurance policy with 'Rented Equipment' coverage you already own on
+                  Kitshare. Verification with you insurance provider typically takes 24-48 hours.
+                </p>
+              </div>
+              <div class="form_insurance">
+                <div class="form-group">
+                  <label for="usr">Certificate of Insurance</label>
+                  <input type="text" class="form-control" [(ngModel)]="insuranceDetails.insurance_description" id="usr"
+                    placeholder="e.g.My insurance certificate">
+                </div>
+                <div class="form-group">
+                  <label for="usr">Expiration date</label>
+                  <input placeholder="Choose Expiration date" name="expiration_date" [(ngModel)]="expiration_date"
+                    class="input100 input1000" [owlDateTimeTrigger]="dt5" [owlDateTime]="dt5">
+                  <owl-date-time [pickerType]="'calendar'" [pickerMode]="'dialog'" #dt5></owl-date-time>
+                </div>
+                <a [href]="insuranceDetails.image_url" target="_blank" *ngIf="insuranceDetails.image_url.length">View
+                  File</a>
+                <div class="ins_upload">
+                  <input type="file" name="policy" id="policy" (change)="onFileChange($event)" class="">
+                  <!-- <a href="">Drop an image or PDF of the policy here, or click to upload.</a> -->
+                </div>
+                <p class="warning_text">WARNING: Any person or buisness entity providing false,altered, or fraudulent
+                  information,photos, or documentas for insurance purposes will face criminal prosecution.
+                </p>
+                <button (click)="updatePolicy()" class="btn insurance_btn">Save policy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="dropDownSelect1"></div>
+      </div>
+    </div>
+  </div>
+</section>
